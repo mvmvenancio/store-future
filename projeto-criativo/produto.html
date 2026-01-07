@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Produto - Dev Club Store</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos para a página de detalhes */
+        .product-detail-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            padding: 0 10%;
+        }
+        .detail-img img { max-width: 400px; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .back-link { color: var(--accent-color); cursor: pointer; text-decoration: underline; }
+    </style>
+</head>
+    <body class="dark-mode"> <header>
+            <div class="logo">Store Future</div>
+            <nav>
+                <ul>
+                    <li><span class="back-link" onclick="window.history.back()">Voltar</span></li>
+                    <li><button id="theme-btn">Trocar Tema</button></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="product-detail-container">
+            <div class="detail-img">
+                <img id="main-img" src="" alt="">
+            </div>
+            <div class="content">
+                <h1 id="main-title" class="title"></h1>
+                <p id="main-desc" class="description"></p>
+                <h2 id="main-price" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 20px;"></h2>
+                <button class="btn-buy">Adicionar ao Carrinho</button>
+            </div>
+        </main>
+
+        <script>
+            // 1. CARREGAR DADOS DO PRODUTO
+            const params = new URLSearchParams(window.location.search);
+
+            // Verificação de segurança: se o elemento existe antes de atribuir
+            if(document.getElementById('main-title')) {
+                document.getElementById('main-title').innerText = params.get('nome') || "Produto";
+                document.getElementById('main-desc').innerText = params.get('desc') || "";
+                document.getElementById('main-img').src = "img/" + params.get('img');
+                document.getElementById('main-price').innerText = "R$ " + (params.get('preco') || "0,00");
+            }
+
+            // 2. LÓGICA DE TEMA (DARK/LIGHT)
+            const themeBtn = document.getElementById('theme-btn');
+            const body = document.body;
+
+            // FUNÇÃO PARA APLICAR O TEMA
+            function aplicarTema(tema) {
+                if (tema === 'light') {
+                    body.classList.remove('light-mode');
+                    body.classList.add('dark-mode');
+                    if(themeBtn) themeBtn.innerText = "Modo Escuro";
+                } else {
+                    body.classList.remove('dark-mode');
+                    body.classList.add('light-mode');
+                    if(themeBtn) themeBtn.innerText = "Modo Claro";
+                }
+            }
+
+            // AO CARREGAR A PÁGINA: Verifica o que está salvo no navegador
+            const temaSalvo = localStorage.getItem('theme') || 'dark'; // padrão dark
+            aplicarTema(temaSalvo);
+
+            // AO CLICAR NO BOTÃO: Inverte o tema e salva
+            if(themeBtn) {
+                themeBtn.onclick = () => {
+                    const novoTema = body.classList.contains('light-mode') ? 'light' : 'dark';
+                    localStorage.setItem('theme', novoTema);
+                    aplicarTema(novoTema);
+                }
+            }
+        </script>
+    </body>
+</html>

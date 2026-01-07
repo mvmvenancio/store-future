@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store - Projeto Criativo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode"> <header>
+        <div class="logo">Store Future</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Contato</li>
+                <li><button id="theme-btn">Trocar Tema</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="background-elements">
+            <div class="circle c1"></div>
+            <div class="circle c2"></div>
+            <div class="circle c3"></div>
+        </div>
+
+        <div class="list">
+            <div class="item active">
+                <div class="content">
+                    <p class="category">Smartwatch</p>
+                    <h1 class="title">Apple Watch 10</h1>
+                    <p class="description">
+                        O futuro da saúde e conectividade no seu pulso. Mais fino, mais rápido e mais inteligente.
+                    </p>
+                    <button class="btn-buy" onclick="irParaProduto()">Saiba Mais</button>
+                </div>
+                <div class="product-image">
+                    <img src="img/apple-watch.png" alt="Apple Watch">
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="content">
+                    <p class="category">Áudio</p>
+                    <h1 class="title">AirPods Pro</h1>
+                    <p class="description">
+                        Cancelamento ativo de ruído duas vezes melhor. Som imersivo de alta fidelidade.
+                    </p>
+                    <button class="btn-buy" onclick="irParaProduto()">Saiba Mais</button>
+                </div>
+                <div class="product-image">
+                    <img src="img/airpods.png" alt="AirPods Pro">
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="content">
+                    <p class="category">Realidade Virtual</p>
+                    <h1 class="title">Vision Pro</h1>
+                    <p class="description">
+                        Bem-vindo à era da computação espacial. Seus apps favoritos agora no seu ambiente físico.
+                    </p>
+                    <button class="btn-buy" onclick="irParaProduto()">Saiba Mais</button>
+                </div>
+                <div class="product-image">
+                    <img src="img/vision-pro.png" alt="Apple Vision Pro">
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+
+        <div class="indicators">
+            <div class="number">01</div>
+            <div class="dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
